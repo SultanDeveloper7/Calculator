@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+body {
+  background-color: #1b1b1f;
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+button {
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 50%;
+}
+.numbers {
+  color: #b3b6be;
+}
