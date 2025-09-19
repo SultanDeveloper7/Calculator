@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-body {
+@custom-variant dark (&:where(.dark, .dark *));
+
+.main-body {
   background-color: #1b1b1f;
   height: 100vh;
   width: 100%;
@@ -15,6 +17,7 @@ button {
   font-weight: bold;
   border-radius: 50%;
 }
+
 .numbers {
   color: #b3b6be;
 }
