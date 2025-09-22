@@ -45,7 +45,7 @@ export default function App() {
 
   return (
     <>
-      <div className={`bg-[#E6E6E6] dark:bg-[#1b1b1f] ${themeDuration} h-[100dvh] w-[100%] flex items-center justify-center`}>
+      <div className={`bg-[#E6E6E6] dark:bg-[#1b1b1f] ${themeDuration} h-[100vh] w-[100%] flex items-center justify-center`}>
         <div className={`bg-[#FFFFFF] dark:bg-[#030822] ${themeDuration} rounded-[20px] overflow-hidden`}>
           <div className="h-12 mb-8 flex items-center justify-center">
             <div className={`bg-[#F0F0F0] dark:bg-[#1E2032] ${themeDuration} rounded-[6px] px-3 py-2 flex gap-6`}>
