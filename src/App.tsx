@@ -1,12 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import sunIcon from "../public/icons/icons8-sun-50.png";
 import moonIcon from "../public/icons/icons8-moon-50.png";
 import "./App.css";
 
 export default function App() {
   const themeDuration = "transition-colors duration-500 ease-in-out";
+  const validNumKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "*", "/", ".", "%"];
+
   const [result, setResult] = useState<string>("");
   const [display, setDisplay] = useState<string>("");
+
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      const key = e.key;
+      if (validNumKeys.includes(key)) {
+        appendDisplay(key);
+      }
+      if (key === "Enter") {
+        e.preventDefault();
+        clacDisplay();
+      }
+      if (key === "Backspace") {
+        clearData();
+      }
+      if (key === "Escape") {
+        clearDisplay();
+      }
+    };
+
+    window.addEventListener("keydown", handleGlobalKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleGlobalKeyDown);
+    };
+  }, [display, result]);
 
   function toggleTheme(isDark: boolean) {
     localStorage.setItem("isDark", isDark ? "dark" : "light");
@@ -26,8 +53,12 @@ export default function App() {
     setResult("");
   }
   function clacDisplay() {
-    const result = eval(display);
-    setResult(result);
+    try {
+      const result = eval(display);
+      setResult(result.toString());
+    } catch (error) {
+      setResult("Error");
+    }
   }
 
   function logValues() {
@@ -40,7 +71,7 @@ export default function App() {
 
   function clearData() {
     setDisplay(display.slice(0, -1));
-    setResult(result.slice(0, -1));
+    setResult("");
   }
 
   return (
